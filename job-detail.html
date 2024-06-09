@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Chi Tiết Công Việc - Tuyển Dụng SmartNew</title>
+    <script>
+        function loadJobDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const jobId = params.get('id');
+            const jobDetails = {
+                1: {
+                    title: "Kỹ Sư Phần Mềm",
+                    location: "Hà Nội",
+                    department: "IT",
+                },
+                2: {
+                    title: "Chuyên Viên Marketing",
+                    location: "TP Hồ Chí Minh",
+                    department: "Marketing",
+                },
+                3: {
+                    title: "Kỹ Thuật Viên Camera",
+                    location: "Hà Nội",
+                    department: "Kỹ Thuật",
+                    details: `
+                        <p><strong>Yêu cầu:</strong></p>
+                        <ul>
+                            <li>Là sinh viên đã hoặc chuẩn bị ra trường các ngành về kỹ thuật hoặc công nghệ</li>
+                            <li>Tuổi dưới 26</li>
+                            <li>Có thể gắn bó lâu dài</li>
+                            <li>Không biết sẽ được đào tạo làm và tích lũy kinh nghiệm</li>
+                        </ul>
+                        <p><strong>Ưu tiên:</strong></p>
+                        <ul>
+                            <li>Những bạn nào đã có kinh nghiệm hoặc hiểu biết về các loại camera</li>
+                            <li>Thích tìm tòi tháo dỡ các sản phẩm linh kiện điện tử.</li>
+                        </ul>
+                        <p><strong>Công việc:</strong></p>
+                        <ul>
+                            <li>Hỗ trợ kiểm tra, sửa chữa lắp đặt camera, màn hình PC.</li>
+                            <li>Test và kiểm tra sản phẩm</li>
+                            <li>Đóng gói và kiểm tra nhãn mác sản phẩm</li>
+                        </ul>
+                        <p><strong>Lương:</strong></p>
+                        <p>6-8tr + Phụ cấp + thưởng</p>
+                        <p><strong>Địa điểm làm việc:</strong></p>
+                        <p>Tại Hà Nội : Biệt thự liền kề 21-N03 Phố Dịch Vọng - Cầu Giấy Hà Nội</p>
+                        <p><strong>Thời gian làm:</strong></p>
+                        <p>Thứ 2- Thứ 7 . Sáng 8h-12h. Chiều 1h30-5h30.</p>
+                        <p><strong>Phúc lợi:</strong></p>
+                        <p>Bảo hiểm + Ăn trưa + Du lich + Ăn chơi</p>
+                        <p><strong>Nộp hồ sơ về:</strong></p>
+                        <p>Email: smartnew.vn@gmail.com</p>
+                        <p>Hoặc gọi trực tiếp Mr.Hồng - 0983 902 981.</p>
+                    `,
+                },
+                4: {
+                    title: "Kỹ Thuật Viên Màn Hình Máy Tính",
+                    location: "Hà Nội",
+                    department: "Kỹ Thuật",
+                    details: `
+                        <p><strong>Yêu cầu:</strong></p>
+                        <ul>
+                            <li>Là sinh viên đã hoặc chuẩn bị ra trường các ngành về kỹ thuật hoặc công nghệ</li>
+                            <li>Tuổi dưới 26</li>
+                            <li>Có thể gắn bó lâu dài</li>
+                            <li>Không biết sẽ được đào tạo làm và tích lũy kinh nghiệm</li>
+                        </ul>
+                        <p><strong>Ưu tiên:</strong></p>
+                        <ul>
+                            <li>Những bạn nào đã có kinh nghiệm hoặc hiểu biết về các loại camera</li>
+                            <li>Thích tìm tòi tháo dỡ các sản phẩm linh kiện điện tử.</li>
+                        </ul>
+                        <p><strong>Công việc:</strong></p>
+                        <ul>
+                            <li>Hỗ trợ kiểm tra, sửa chữa lắp đặt camera, màn hình PC.</li>
+                            <li>Test và kiểm tra sản phẩm</li>
+                            <li>Đóng gói và kiểm tra nhãn mác sản phẩm</li>
+                        </ul>
+                        <p><strong>Lương:</strong></p>
+                        <p>6-8tr + Phụ cấp + thưởng</p>
+                        <p><strong>Địa điểm làm việc:</strong></p>
+                        <p>Tại Hà Nội : Biệt thự liền kề 21-N03 Phố Dịch Vọng - Cầu Giấy Hà Nội</p>
+                        <p><strong>Thời gian làm:</strong></p>
+                        <p>Thứ 2- Thứ 7 . Sáng 8h-12h. Chiều 1h30-5h30.</p>
+                        <p><strong>Phúc lợi:</strong></p>
+                        <p>Bảo hiểm + Ăn trưa + Du lich + Ăn chơi</p>
+                        <p><strong>Nộp hồ sơ về:</strong></p>
+                        <p>Email: smartnew.vn@gmail.com</p>
+                        <p>Hoặc gọi trực tiếp Mr.Hồng - 0983 902 981.</p>
+                    `,
+                }
+            };
+
+            const job = jobDetails[jobId];
+            if (job) {
+                document.getElementById('job-title').innerText = job.title;
+                document.getElementById('job-location').innerText = `Địa Điểm: ${job.location}`;
+                document.getElementById('job-department').innerText = `Phòng Ban: ${job.department}`;
+                document.getElementById('job-details').innerHTML = job.details || '';
+            } else {
+                document.getElementById('job-title').innerText = 'Công việc không tồn tại';
+                document.getElementById('job-location').innerText = '';
+                document.getElementById('job-department').innerText = '';
+                document.getElementById('job-details').innerHTML = '';
+            }
+        }
+
+        window.onload = loadJobDetails;
+    </script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
+        <h1>Chi Tiết Công Việc</h1>
+        <nav>
+            <a href="index.html">Trang Chủ</a>
+            <a href="job-list.html">Danh Sách Công Việc</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 id="job-title"></h2>
+            <p id="job-location"></p>
+            <p id="job-department"></p>
+            <div id="job-details"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartNew.vn</p>
+    </footer>
+</body>
+</html>

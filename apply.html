@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Ứng Tuyển Online - SmartNew</title>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
+        <h1>Ứng Tuyển Online</h1>
+        <nav>
+            <a href="index.html">Trang Chủ</a>
+            <a href="job-list.html">Danh Sách Công Việc</a>
+        </nav>
+    </header>
+    <main>
+        <section id="apply-online">
+            <h2>Ứng Tuyển Online</h2>
+            <form id="apply-form">
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <label for="cv">Tải lên CV của bạn:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                
+                <button type="button" onclick="validateForm()">Nộp Đơn</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartNew.vn</p>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

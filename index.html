@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Tuyển Dụng SmartNew</title>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
+        <h1 data-lang="vi">Chào Mừng Đến Với Tuyển Dụng SmartNew</h1>
+        <h1 data-lang="en" style="display: none;">Welcome to SmartNew Recruitment</h1>
+        <nav>
+            <a href="index.html" data-lang="vi">Trang Chủ</a>
+            <a href="index.html" data-lang="en" style="display: none;">Home</a>
+            <a href="about.html" data-lang="vi">Giới Thiệu</a>
+            <a href="about.html" data-lang="en" style="display: none;">About</a>
+            <div class="dropdown">
+                <button class="dropbtn" data-lang="vi">Cơ Hội Nghề Nghiệp <span class="arrow">&#9660;</span></button>
+                <button class="dropbtn" data-lang="en" style="display: none;">Careers <span class="arrow">&#9660;</span></button>
+                <div class="dropdown-content">
+                    <a href="headquarters.html" data-lang="vi">Trụ Sở Chính</a>
+                    <a href="headquarters.html" data-lang="en" style="display: none;">Headquarters</a>
+                    <a href="job-list.html" data-lang="vi">Tất Cả Công Việc</a>
+                    <a href="job-list.html" data-lang="en" style="display: none;">All Jobs</a>
+                </div>
+            </div>
+            <a href="apply.html" data-lang="vi">Ứng Tuyển Online</a>
+            <a href="apply.html" data-lang="en" style="display: none;">Apply Online</a>
+        </nav>
+        <button onclick="toggleLanguage()">Change Language</button>
+    </header>
+    
+    <!-- Thêm ảnh dưới phần header -->
+    <section class="banner">
+        <img src="images/tuyen-dung-2021-2.jpg" alt="Thông Tin Tuyển Dụng">
+    </section>
+
+    <main>
+        <section id="search">
+            <div class="search-container">
+                <div class="search-box">
+                    <label for="keyword-search">Tìm kiếm theo Từ khóa</label>
+                    <input type="text" id="keyword-search" placeholder="Tìm kiếm...">
+                </div>
+                <div class="search-box">
+                    <label for="location-search">Tìm kiếm theo địa điểm</label>
+                    <input type="text" id="location-search" placeholder="Tìm kiếm...">
+                </div>
+                <button>Tìm kiếm</button>
+            </div>
+            <a href="#">Hiển thị tùy chọn khác</a>
+        </section>
+        <section id="info">
+            <div class="info-box">
+                <h3>HỆ THỐNG TUYỂN DỤNG SMARTNEW</h3>
+                <p>27/176 Mai Dịch-Cầu Giấy-HN</p>
+                <p>Số điện thoại: 0967534818 - 0388969047 </p>
+            </div>
+            <div class="info-box">
+                <h3>GIA NHẬP MẠNG LƯỚI NHÂN TÀI CỦA CHÚNG TÔI</h3>
+                <p>Nhập địa chỉ thư điện tử để chúng tôi biết về bạn. Chúng tôi sẽ thông báo cho bạn về các cơ hội việc làm phù hợp với bạn.</p>
+                <input type="email" placeholder="Nhận thông tin về công việc mới qua email">
+                <button>Đăng ký ngay bây giờ</button>
+                <p>Đã là thành viên? <a href="#">Xem thông tin</a></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p data-lang="vi">&copy; 2024 SmartNew.vn</p>
+        <p data-lang="en" style="display: none;">&copy; 2024 SmartNew.vn</p>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
