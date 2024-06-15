@@ -8,14 +8,19 @@ body {
 header {
     background-color: #333;
     color: #fff;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
+    justify-content: flex-start; /* Căn các phần tử về phía trái */
+    flex-wrap: wrap; /* Đảm bảo các phần tử xuống dòng khi cần thiết */
 }
 
 header .logo {
     height: 50px;
+    margin-right: 20px; /* Tạo khoảng cách giữa logo và các mục trong nav */
 }
 
 nav {
@@ -23,19 +28,69 @@ nav {
     align-items: center;
 }
 
-nav a {
+nav a, .dropbtn {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu và màu nền */
+    padding: 10px 16px;
+    border-radius: 3px;
+    background-color: #333; /* Đảm bảo màu nền giống nhau */
+}
+
+nav a:hover, .dropbtn:hover {
+    color: #ddd; /* Thay đổi màu khi hover */
+    background-color: #555; /* Thay đổi màu nền khi hover */
 }
 
 button {
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 5px 10px;
     background-color: #555;
     color: #fff;
     border: none;
     cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu nền */
+}
+
+button:hover {
+    background-color: #777; /* Thay đổi màu nền khi hover */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* Đảm bảo màu nền giống nhau */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #fff; /* Đảm bảo màu chữ giống nhau */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu nền */
+}
+
+.dropdown-content a:hover {
+    background-color: #555; /* Thay đổi màu nền khi hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.arrow {
+    margin-left: 5px;
 }
 
 .banner img {
@@ -93,6 +148,7 @@ section {
     justify-content: space-between;
     background-color: #e0f7fa;
     padding: 20px;
+    flex-wrap: wrap; /* Đảm bảo các hộp thông tin không bị thay đổi */
 }
 
 .info-box {
@@ -100,6 +156,7 @@ section {
     background-color: #b2dfdb;
     padding: 20px;
     border-radius: 5px;
+    box-sizing: border-box; /* Thêm dòng này để khóa kích thước */
 }
 
 #alert {
@@ -149,64 +206,7 @@ input[type="email"], input[type="text"], input[type="tel"], input[type="file"] {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    position: relative;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background-color: #333;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #555;
-}
-
-.arrow {
-    margin-left: 5px;
+    box-sizing: border-box; /* Thêm dòng này để khóa kích thước */
 }
 
 #apply-online {
@@ -234,8 +234,9 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi màu nền */
 }
 
 #apply-online button:hover {
-    background-color: #218838;
+    background-color: #218838; /* Thay đổi màu nền khi hover */
 }

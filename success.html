@@ -5,24 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Nộp CV Thành Công - SmartNew</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector("header").innerHTML = data;
+                })
+                .then(() => {
+                    const lang = localStorage.getItem('lang') || 'vi';
+                    setLanguage(lang);
+                });
+        });
+
+        function toggleLanguage() {
+            const lang = document.documentElement.lang === 'vi' ? 'en' : 'vi';
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+            });
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
-        <h1>Nộp CV Thành Công</h1>
-        <nav>
-            <a href="index.html">Trang Chủ</a>
-            <a href="job-list.html">Danh Sách Công Việc</a>
-        </nav>
-    </header>
+    <header></header>
     <main>
         <section id="success-message">
-            <h2>Bạn đã nộp CV thành công!</h2>
-            <p>Cảm ơn bạn đã nộp đơn ứng tuyển. Chúng tôi sẽ xem xét và liên hệ với bạn sớm nhất có thể.</p>
+            <h2 data-lang="vi">Bạn đã nộp CV thành công!</h2>
+            <h2 data-lang="en" style="display: none;">Your CV has been successfully submitted!</h2>
+            <p data-lang="vi">Cảm ơn bạn đã nộp đơn ứng tuyển. Chúng tôi sẽ xem xét và liên hệ với bạn sớm nhất có thể.</p>
+            <p data-lang="en" style="display: none;">Thank you for applying. We will review your application and contact you as soon as possible.</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 SmartNew.vn</p>
+        <p data-lang="vi">&copy; 2024 SmartNew.vn</p>
+        <p data-lang="en" style="display: none;">&copy; 2024 SmartNew.vn</p>
     </footer>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

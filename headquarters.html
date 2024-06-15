@@ -5,79 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Trụ Sở Chính - SmartNew</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector("header").innerHTML = data;
+                })
+                .then(() => {
+                    const lang = localStorage.getItem('lang') || 'vi';
+                    setLanguage(lang);
+                });
+        });
+
+        function toggleLanguage() {
+            const lang = document.documentElement.lang === 'vi' ? 'en' : 'vi';
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+            });
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
-        <h1 data-lang="vi">Trụ Sở Chính</h1>
-        <h1 data-lang="en" style="display: none;">Headquarters</h1>
-        <nav>
-            <a href="index.html" data-lang="vi">Trang Chủ</a>
-            <a href="index.html" data-lang="en" style="display: none;">Home</a>
-            <a href="about.html" data-lang="vi">Giới Thiệu</a>
-            <a href="about.html" data-lang="en" style="display: none;">About</a>
-            <div class="dropdown">
-                <button class="dropbtn" data-lang="vi">Cơ Hội Nghề Nghiệp <span class="arrow">&#9660;</span></button>
-                <button class="dropbtn" data-lang="en" style="display: none;">Careers <span class="arrow">&#9660;</span></button>
-                <div class="dropdown-content">
-                    <a href="headquarters.html" data-lang="vi">Trụ Sở Chính</a>
-                    <a href="headquarters.html" data-lang="en" style="display: none;">Headquarters</a>
-                    <a href="job-list.html" data-lang="vi">Tất Cả Công Việc</a>
-                    <a href="job-list.html" data-lang="en" style="display: none;">All Jobs</a>
-                </div>
-            </div>
-        </nav>
-        <button onclick="toggleLanguage()">Change Language</button>
-    </header>
-    
+    <header></header>
     <main>
         <section id="search">
             <div class="search-container">
                 <div class="search-box">
-                    <label for="keyword-search">Tìm kiếm theo Từ khóa</label>
+                    <label for="keyword-search" data-lang="vi">Tìm kiếm theo Từ khóa</label>
+                    <label for="keyword-search" data-lang="en" style="display: none;">Search by Keyword</label>
                     <input type="text" id="keyword-search" placeholder="Tìm kiếm...">
                 </div>
                 <div class="search-box">
-                    <label for="location-search">Tìm kiếm theo địa điểm</label>
+                    <label for="location-search" data-lang="vi">Tìm kiếm theo địa điểm</label>
+                    <label for="location-search" data-lang="en" style="display: none;">Search by Location</label>
                     <input type="text" id="location-search" placeholder="Tìm kiếm...">
                 </div>
-                <button>Tìm kiếm</button>
+                <button data-lang="vi">Tìm kiếm</button>
+                <button data-lang="en" style="display: none;">Search</button>
             </div>
-            <a href="#">Hiển thị tùy chọn khác</a>
+            <a href="#" data-lang="vi">Hiển thị tùy chọn khác</a>
+            <a href="#" data-lang="en" style="display: none;">Show more options</a>
         </section>
         <section id="alert">
-            <label for="frequency">Theo dõi việc làm trong danh mục này</label>
+            <label for="frequency" data-lang="vi">Theo dõi việc làm trong danh mục này</label>
+            <label for="frequency" data-lang="en" style="display: none;">Follow jobs in this category</label>
             <input type="number" id="frequency" placeholder="Chọn tần suất (theo ngày)">
-            <button>Tạo cảnh báo</button>
+            <button data-lang="vi">Tạo cảnh báo</button>
+            <button data-lang="en" style="display: none;">Create alert</button>
         </section>
         <section id="job-list">
-            <h2>Các kết quả 1 – 10 về 10</h2>
+            <h2 data-lang="vi">Các kết quả 1 – 10 về 10</h2>
+            <h2 data-lang="en" style="display: none;">Results 1 - 10 of 10</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Vị trí</th>
-                        <th>Địa điểm</th>
-                        <th>Ngày</th>
+                        <th data-lang="vi">Vị trí</th>
+                        <th data-lang="en" style="display: none;">Position</th>
+                        <th data-lang="vi">Địa điểm</th>
+                        <th data-lang="en" style="display: none;">Location</th>
+                        <th data-lang="vi">Ngày</th>
+                        <th data-lang="en" style="display: none;">Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Nhân viên Hỗ trợ kinh doanh gián tiếp</td>
+                        <td data-lang="vi">Nhân viên Hỗ trợ kinh doanh gián tiếp</td>
+                        <td data-lang="en" style="display: none;">Indirect Sales Support Staff</td>
                         <td>Hà Nội, VN</td>
                         <td>6 thg 6, 2024</td>
                     </tr>
                     <tr>
-                        <td>Chuyên viên Giám sát hoạt động Công nghệ thông tin</td>
+                        <td data-lang="vi">Chuyên viên Giám sát hoạt động Công nghệ thông tin</td>
+                        <td data-lang="en" style="display: none;">IT Operations Supervisor</td>
                         <td>Hà Nội, VN</td>
                         <td>6 thg 6, 2024</td>
                     </tr>
                     <tr>
-                        <td>Kỹ thuật viên Camera</td>
+                        <td data-lang="vi">Kỹ thuật viên Camera</td>
+                        <td data-lang="en" style="display: none;">Camera Technician</td>
                         <td>Hà Nội, VN</td>
                         <td>6 thg 6, 2024</td>
                     </tr>
                     <tr>
-                        <td>Kỹ thuật viên Màn hình máy tính</td>
+                        <td data-lang="vi">Kỹ thuật viên Màn hình máy tính</td>
+                        <td data-lang="en" style="display: none;">Computer Monitor Technician</td>
                         <td>Hà Nội, VN</td>
                         <td>6 thg 6, 2024</td>
                     </tr>

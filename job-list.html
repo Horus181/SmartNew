@@ -5,42 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Danh Sách Công Việc - Tuyển Dụng SmartNew</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector("header").innerHTML = data;
+                })
+                .then(() => {
+                    const lang = localStorage.getItem('lang') || 'vi';
+                    setLanguage(lang);
+                });
+        });
+
+        function toggleLanguage() {
+            const lang = document.documentElement.lang === 'vi' ? 'en' : 'vi';
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+            });
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
-        <h1>Danh Sách Công Việc</h1>
-        <nav>
-            <a href="index.html">Trang Chủ</a>
-            <a href="job-list.html">Danh Sách Công Việc</a>
-        </nav>
-    </header>
+    <header></header>
     <main>
         <section>
             <article>
-                <h2><a href="job-detail.html?id=1">Kỹ Sư Phần Mềm</a></h2>
-                <p>Địa Điểm: Hà Nội</p>
-                <p>Phòng Ban: IT</p>
+                <h2><a href="job-detail.html?id=1" data-lang="vi">Kỹ Sư Phần Mềm</a><a href="job-detail.html?id=1" data-lang="en" style="display: none;">Software Engineer</a></h2>
+                <p data-lang="vi">Địa Điểm: Hà Nội</p>
+                <p data-lang="en" style="display: none;">Location: Hanoi</p>
+                <p data-lang="vi">Phòng Ban: IT</p>
+                <p data-lang="en" style="display: none;">Department: IT</p>
             </article>
             <article>
-                <h2><a href="job-detail.html?id=2">Chuyên Viên Marketing</a></h2>
-                <p>Địa Điểm: TP Hồ Chí Minh</p>
-                <p>Phòng Ban: Marketing</p>
+                <h2><a href="job-detail.html?id=2" data-lang="vi">Chuyên Viên Marketing</a><a href="job-detail.html?id=2" data-lang="en" style="display: none;">Marketing Specialist</a></h2>
+                <p data-lang="vi">Địa Điểm: TP Hồ Chí Minh</p>
+                <p data-lang="en" style="display: none;">Location: Ho Chi Minh City</p>
+                <p data-lang="vi">Phòng Ban: Marketing</p>
+                <p data-lang="en" style="display: none;">Department: Marketing</p>
             </article>
             <article>
-                <h2><a href="job-detail.html?id=3">Kỹ Thuật Viên Camera</a></h2>
-                <p>Địa Điểm: Hà Nội</p>
-                <p>Phòng Ban: Kỹ Thuật</p>
+                <h2><a href="job-detail.html?id=3" data-lang="vi">Kỹ Thuật Viên Camera</a><a href="job-detail.html?id=3" data-lang="en" style="display: none;">Camera Technician</a></h2>
+                <p data-lang="vi">Địa Điểm: Hà Nội</p>
+                <p data-lang="en" style="display: none;">Location: Hanoi</p>
+                <p data-lang="vi">Phòng Ban: Kỹ Thuật</p>
+                <p data-lang="en" style="display: none;">Department: Technical</p>
             </article>
             <article>
-                <h2><a href="job-detail.html?id=4">Kỹ Thuật Viên Màn Hình Máy Tính</a></h2>
-                <p>Địa Điểm: Hà Nội</p>
-                <p>Phòng Ban: Kỹ Thuật</p>
+                <h2><a href="job-detail.html?id=4" data-lang="vi">Kỹ Thuật Viên Màn Hình Máy Tính</a><a href="job-detail.html?id=4" data-lang="en" style="display: none;">Computer Monitor Technician</a></h2>
+                <p data-lang="vi">Địa Điểm: Hà Nội</p>
+                <p data-lang="en" style="display: none;">Location: Hanoi</p>
+                <p data-lang="vi">Phòng Ban: Kỹ Thuật</p>
+                <p data-lang="en" style="display: none;">Department: Technical</p>
             </article>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 SmartNew.vn</p>
+        <p data-lang="vi">&copy; 2024 SmartNew.vn</p>
+        <p data-lang="en" style="display: none;">&copy; 2024 SmartNew.vn</p>
     </footer>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

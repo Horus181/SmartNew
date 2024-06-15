@@ -5,38 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Ứng Tuyển Online - SmartNew</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector("header").innerHTML = data;
+                })
+                .then(() => {
+                    const lang = localStorage.getItem('lang') || 'vi';
+                    setLanguage(lang);
+                });
+        });
+
+        function toggleLanguage() {
+            const lang = document.documentElement.lang === 'vi' ? 'en' : 'vi';
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+            });
+        }
+
+        function validateForm() {
+            const form = document.getElementById('apply-form');
+            if (form.checkValidity()) {
+                alert('Đơn ứng tuyển của bạn đã được nộp thành công!');
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin vào các trường yêu cầu.');
+            }
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="SmartNew Logo" class="logo">
-        <h1>Ứng Tuyển Online</h1>
-        <nav>
-            <a href="index.html">Trang Chủ</a>
-            <a href="job-list.html">Danh Sách Công Việc</a>
-        </nav>
-    </header>
+    <header></header>
     <main>
         <section id="apply-online">
-            <h2>Ứng Tuyển Online</h2>
+            <h2 data-lang="vi">Ứng Tuyển Online</h2>
+            <h2 data-lang="en" style="display: none;">Apply Online</h2>
             <form id="apply-form">
-                <label for="name">Họ và Tên:</label>
+                <label for="name" data-lang="vi">Họ và Tên:</label>
+                <label for="name" data-lang="en" style="display: none;">Full Name:</label>
                 <input type="text" id="name" name="name" required>
                 
-                <label for="email">Email:</label>
+                <label for="email" data-lang="vi">Email:</label>
+                <label for="email" data-lang="en" style="display: none;">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
-                <label for="phone">Số điện thoại:</label>
+                <label for="phone" data-lang="vi">Số điện thoại:</label>
+                <label for="phone" data-lang="en" style="display: none;">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
                 
-                <label for="cv">Tải lên CV của bạn:</label>
+                <label for="cv" data-lang="vi">Tải lên CV của bạn:</label>
+                <label for="cv" data-lang="en" style="display: none;">Upload your CV:</label>
                 <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
                 
-                <button type="button" onclick="validateForm()">Nộp Đơn</button>
+                <button type="button" onclick="validateForm()" data-lang="vi">Nộp Đơn</button>
+                <button type="button" onclick="validateForm()" data-lang="en" style="display: none;">Submit Application</button>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 SmartNew.vn</p>
+        <p data-lang="vi">&copy; 2024 SmartNew.vn</p>
+        <p data-lang="en" style="display: none;">&copy; 2024 SmartNew.vn</p>
     </footer>
     <script src="js/scripts.js"></script>
 </body>
