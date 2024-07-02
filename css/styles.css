@@ -22,6 +22,9 @@ header .logo {
     height: 50px;
     margin-right: 20px; /* Tạo khoảng cách giữa logo và các mục trong nav */
 }
+header .nav{
+    margin-left: 10px;
+}
 
 nav {
     display: flex;
@@ -239,4 +242,14 @@ input[type="email"], input[type="text"], input[type="tel"], input[type="file"] {
 
 #apply-online button:hover {
     background-color: #218838; /* Thay đổi màu nền khi hover */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position:fixed;
+    bottom: 0;
 }

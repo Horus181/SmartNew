@@ -11,33 +11,6 @@ function toggleLanguage() {
     });
 }
 
-function toggleJobs(jobId) {
-    var jobList = document.getElementById(jobId);
-    if (jobList.style.display === "none" || jobList.style.display === "") {
-        jobList.style.display = "block";
-    } else {
-        jobList.style.display = "none";
-    }
-}
-document.getElementById('apply-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    let formData = new FormData(this);
-    
-    fetch('php/process-application.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('message').style.display = 'block';
-        document.getElementById('message').innerText = data;
-    })
-    .catch(error => {
-        document.getElementById('message').style.display = 'block';
-        document.getElementById('message').innerText = 'Có lỗi xảy ra. Vui lòng thử lại.';
-    });
-});
 function validateForm() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
